@@ -1,0 +1,28 @@
+.logo-container {
+    position: fixed;
+    top: 15px;
+    left: 20px;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+/* Hide logo when modal is open using a global approach if possible or via document body class. BUT since it's a sibling in the react tree... Let's just hide the logo implicitly */
+body:has(.modal-open) .logo-container {
+    display: none !important;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+    .logo-container {
+        left: 50%;
+        transform: translateX(-50%);
+        top: 10px;
+
+        /* Optional: slightly adjust top spacing for mobile */
+    }
+
+    /* Hide global logo on the diamond image page (step 5) on mobile */
+    body:has(.final-ui-overlay) .logo-container {
+        display: none !important;
+    }
+}
